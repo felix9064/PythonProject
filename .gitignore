@@ -1,0 +1,14 @@
+*.class
+
+# IntelliJ IDEA Project Files #
+*.iml
+*/.idea/
+
+# 忽略python模块标识文件
+__init__.py
+
+# logs
+*.log
+logs/
+**/logs/
+
