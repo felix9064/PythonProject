@@ -15,6 +15,6 @@ class Student(object):
         else:
             return 'C'
 
-bart = Student('zhangsan', 88)
+bart = Student('Felix', 88)
 bart.print_score()
 print(bart.get_grade())

@@ -12,6 +12,10 @@ python3 learning.py
 '''
 
 import sys
+import os, io, json, subprocess, tempfile
+from urllib import parse
+from wsgiref.simple_server import make_server
+
 
 def check_version():
     v = sys.version_info
@@ -23,9 +27,6 @@ def check_version():
 if not check_version():
     exit(1)
 
-import os, io, json, subprocess, tempfile
-from urllib import parse
-from wsgiref.simple_server import make_server
 
 EXEC = sys.executable
 PORT = 39093
@@ -33,15 +34,18 @@ HOST = 'local.liaoxuefeng.com:%d' % PORT
 TEMP = tempfile.mkdtemp(suffix='_py', prefix='learn_python_')
 INDEX = 0
 
+
 def main():
     httpd = make_server('127.0.0.1', PORT, application)
     print('Ready for Python code on port %d...' % PORT)
     httpd.serve_forever()
 
+
 def get_name():
     global INDEX
     INDEX = INDEX + 1
     return 'test_%d' % INDEX
+
 
 def write_py(name, code):
     fpath = os.path.join(TEMP, '%s.py' % name)
@@ -50,11 +54,13 @@ def write_py(name, code):
     print('Code wrote to: %s' % fpath)
     return fpath
 
+
 def decode(s):
     try:
         return s.decode('utf-8')
     except UnicodeDecodeError:
         return s.decode('gbk')
+
 
 def application(environ, start_response):
     host = environ.get('HTTP_HOST')
