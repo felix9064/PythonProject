@@ -10,5 +10,3 @@ print(name.title())
 # 删除字符串右边的空白字符使用 rstrip()函数
 favorite_language = " java python "
 print(favorite_language.rstrip())
-
-#
