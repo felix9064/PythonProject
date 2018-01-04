@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# 利用Python的切片功能实现一个去掉字符串两边空格的方法
+# 利用Python的切片功能实现一个类似trim去掉字符串两边空格的方法
 
 
 def trim1(s):
@@ -18,7 +18,7 @@ def trim(s):
         s = s[1:]
     while s[-1:] == " ":
         s = s[:-1]
-    return s;
+    return s
 
 # 测试
 
