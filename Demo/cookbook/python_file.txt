@@ -1,0 +1,10 @@
+我在学习python
+python是一门面向对象的编程语言
+python非常简单
+你也跟我一起来学习吧
+我计划要看的书籍有
+python基础教程（第三版）
+流畅的python
+python机器学习基础教程
+python网络数据采集
+python数据科学入门
