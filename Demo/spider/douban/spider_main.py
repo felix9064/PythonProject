@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 爬虫的调度器
-from spider import url_manager, html_outputer, html_downloader, html_parser
+from spider.douban import html_outputer, url_manager, html_downloader, html_parser
 
 
 class SpiderMain(object):
