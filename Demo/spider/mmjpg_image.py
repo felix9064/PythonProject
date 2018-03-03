@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
+import re
 from bs4 import BeautifulSoup
 import time
 import requests
@@ -74,13 +74,14 @@ class GetPic:
             img = self.request(img_src)
             with open(file_name, 'wb') as f:
                 f.write(img.content)
-
-            time.sleep(random.random() * 2)
+            time.sleep(random.random() * 3)
 
     @staticmethod
     def makedir(path):
-        """创建图集文件夹"""
-        path = path.strip()
+        """创建图集文件夹，文件夹不能包含\/:*?"<>|这些字符，故需要先去掉这些字符"""
+        reg = re.compile('[\\\\/:*?"<>|]')
+        path = reg.sub("", str(path.strip()))
+
         full_path = os.path.join("E:\Image", path)
         if not os.path.exists(full_path):
             print('建了一个名字叫做', path, '的文件夹！')
@@ -107,4 +108,4 @@ class GetPic:
 # 运行程序
 if __name__ == '__main__':
     g = GetPic()
-    g.craw("http://www.mmjpg.com/mm/3")
+    g.craw("http://www.mmjpg.com/mm/6")

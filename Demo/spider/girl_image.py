@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 爬取妹子图网站（http://www.mzitu.com/all）列表里面的所有图片
-
+import fake_useragent
 import requests
 from bs4 import BeautifulSoup
 import os
 import re
+import time
+import random
 
 
 class GirlImage:
@@ -27,19 +29,21 @@ class GirlImage:
 
     @staticmethod
     def request(url):
+        fa = fake_useragent.UserAgent()
         """这个函数获取网页的response 然后返回"""
         headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) '
-                          'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36',
-            'referer': "http://www.mzitu.com/100260/2"
+            'User-Agent': fa.random,
+            'Referer': "http://www.mzitu.com/"
         }
         content = requests.get(url, headers=headers)
         return content
 
     @staticmethod
     def makedir(path):
-        """创建图集文件夹"""
-        path = path.strip()
+        """创建图集文件夹，文件夹不能包含\/:*?"<>|这些字符，故需要先去掉这些字符"""
+        reg = re.compile('[\\\\/:*?"<>|]')
+        path = reg.sub("", str(path.strip()))
+
         full_path = os.path.join("E:\Image", path)
         if not os.path.exists(full_path):
             print('建了一个名字叫做', path, '的文件夹！')
@@ -49,6 +53,7 @@ class GirlImage:
             return True
         else:
             print(path, '文件夹已经存在了！')
+            time.sleep(1)
             return False
 
     def html(self, href):
@@ -73,8 +78,9 @@ class GirlImage:
         # name = 25c01
         name = img_url[-9:-4]
         img = self.request(img_url)
-        with open(name + '.jpg', 'ab') as f:
+        with open(name + '.jpg', 'wb') as f:
             f.write(img.content)
+        time.sleep(random.random() * 3)
 
 if __name__ == "__main__":
     girl = GirlImage()
