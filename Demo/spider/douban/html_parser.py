@@ -13,11 +13,12 @@ class HtmlParser(object):
             return
 
         soup = BeautifulSoup(html_content, 'html.parser', from_encoding='utf-8')
-        new_urls = self._get_new_urls(page_url, soup)
-        new_data = self._get_new_data(page_url, soup)
+        new_urls = self.get_new_urls(page_url, soup)
+        new_data = self.get_new_data(page_url, soup)
         return new_urls, new_data
 
-    def _get_new_data(self, page_url, soup):
+    @staticmethod
+    def get_new_data(page_url, soup):
         res_data = {}
         '''
         # <dd class="lemmaWgt-lemmaTitle-title"><h1>Python</h1>
@@ -43,7 +44,8 @@ class HtmlParser(object):
 
         return res_data
 
-    def _get_new_urls(self, page_urls, soup):
+    @staticmethod
+    def get_new_urls(page_urls, soup):
         new_urls = set()
         # links = soup.find_all('a', href=re.compile(r"/item/\S+"))
         links = soup.find_all('a', href=re.compile(r"https://movie.douban.com/subject/\d+/\?from=subject-page"))
