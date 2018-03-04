@@ -11,4 +11,5 @@ __init__.py
 *.log
 logs/
 **/logs/
+*/__pycache__/
 
