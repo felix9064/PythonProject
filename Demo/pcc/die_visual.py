@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# 生成一个柱状图
+
 from pcc.die import Die
 import pygal
 
@@ -25,9 +27,12 @@ print(frequencies)
 hist = pygal.Bar()
 
 hist.title = "掷一个骰子1000次各个点数出现的次数"
-hist.x_labels = ['1', '2', '3', '4', '5', '6']
+hist.x_labels = [x for x in range(1, die.num_sides + 1)]
 hist.x_title = "掷骰子出现的点数"
 hist.y_title = "各点数出现的次数"
 
 hist.add("D6", frequencies)
+# 默认生成svg图表
 hist.render_to_file('die_visual.svg')
+# 生成png格式图表
+hist.render_to_png(filename='die_visual.png')
