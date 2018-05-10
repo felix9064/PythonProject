@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# 问题1.4：怎样从一个集合中获得最大或者最小的 N 个元素列表？
-# 解决方案：heapq模块有两个函数：nlargest()和nsmallest()可以完美解决这个问题。
+"""
+Topic: heapq模块 heapq.nlargest 和 heapq.nsmallest 演示
+Desc : 从一个集合中获得最大或者最小的 N 个元素列表
+"""
 
 import heapq
 
@@ -35,4 +37,3 @@ cheap = heapq.nsmallest(3, portfolio, key=lambda s: s['price'])
 print(cheap)
 expensive = heapq.nlargest(3, portfolio, key=lambda s: s['price'])
 print(expensive)
-
