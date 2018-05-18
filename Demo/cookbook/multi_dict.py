@@ -23,14 +23,14 @@ pairs = {
 
 # 自己实现
 d = {}
-for key in pairs:
+for key, value in pairs.items():
     if key not in d:
         d[key] = []
-    d[key].append(pairs[key])
+    d[key].append(value)
 
 
 # 使用defaultdict实现
 d2 = defaultdict(list)
-for key in pairs:
-    d2[key].append(pairs[key])
+for key, value in pairs.items():
+    d2[key].append(value)
 print(d2)
