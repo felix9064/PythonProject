@@ -35,6 +35,7 @@ class Rational:
     def __truediv__(self, r):
         return Rational(self.p * r.q, self.q * r.p)
 
+
 r1 = Rational(1, 2)
 r2 = Rational(1, 4)
 

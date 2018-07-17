@@ -4,6 +4,8 @@
 # Python3中字符串相关的一些操作方法
 
 # title()方法使字符串的每个单词首字母大写
+import re
+
 name = "felix chang"
 print(name.title())
 
@@ -13,6 +15,12 @@ print(name.count('x', 1, -1))
 # strip()，lstrip()和rstrip()方法分别为去掉字符串两边，左边和右边的空白字符
 favorite_language = " java python javascript "
 print(favorite_language.rstrip())
+
+# 去掉字符串中的特殊字符
+aa = '我/是:一*只?小"小<小>鸟|的\好'
+p1 = re.compile('[\\\\/:*?"<>|]')
+print(p1.sub("", aa))
+
 
 # find,index,rfind,rindex等方法用来检测指定字符串是否包含在当前字符串中，可选参数为在字符串搜索的开始与结束位置
 # 返回值为第一次查找到的索引值，以r开头的方法则是从当前字符串的右边开始查找

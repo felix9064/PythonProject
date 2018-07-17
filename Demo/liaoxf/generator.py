@@ -18,7 +18,7 @@ class Student(Person):
     def who_am_i(self):
         return 'I am a Student, my name is %s' % self.name
 
-s = Student("felix", "Male", 99)
 
+s = Student("felix", "Male", 99)
 print(dir(s))
 print(list(filter(lambda x: x[:2] != "__" and x[-2:] != "__", dir(s))))

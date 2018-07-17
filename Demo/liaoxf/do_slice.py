@@ -22,3 +22,18 @@ print(newList[81::2])
 print(newList[::10])
 
 # 切片可以命名
+s1 = slice(1, 8)
+print(newList[s1])
+
+# 切片可以被赋值
+list1 = list(range(10))
+
+list1[2:5] = [20, 30]
+print(list1)
+del list1[5:7]
+list1[3::2] = [11, 22]
+
+# 如果赋值的对象是一个切片，那么赋值语句的右侧必须是个可迭代对象，下面第一个例子会报错
+# list1[2:5] = 100
+list1[2:5] = [100]
+print(list1)

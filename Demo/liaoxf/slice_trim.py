@@ -5,6 +5,7 @@
 
 
 def trim1(s):
+    """利用迭代来实现"""
     if s[:1] != " " and s[-1:] != " ":
         return s
     elif s[:1] == " ":
@@ -14,6 +15,7 @@ def trim1(s):
 
 
 def trim(s):
+    """更简洁的利用循环来实现"""
     while s[:1] == " ":
         s = s[1:]
     while s[-1:] == " ":
@@ -21,6 +23,7 @@ def trim(s):
     return s
 
 # 测试
+
 
 if trim('hello  ') != 'hello':
     print('测试失败!')

@@ -18,6 +18,7 @@ class Student(object):
         else:
             raise ValueError('年龄非法')
 
+
 # 测试:
 bart = Student('Bart', 'male')
 if bart.get_gender() != 'male':
